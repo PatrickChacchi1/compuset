@@ -44,7 +44,7 @@ include 'funciones/conexion.php';
             <nav>
                 <li><a>Productos</a>
                     <ul>
-                        <li><a href="productos/categorias/">Categorias</a></li>
+                        <li><a href="productos/categorias/">Categoria</a></li>
                         <li><a href="productos/componentes/">Componentes</a></li>
                     </ul>
                 </li>

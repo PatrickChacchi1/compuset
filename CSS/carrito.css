@@ -1,0 +1,39 @@
+.fila {
+    width: 90%;
+    margin: 2% auto;
+
+    overflow: hidden;
+}
+
+h2{
+    text-align: center;
+    background-color: red;
+}
+.columna {
+    background: lightblue;
+    float: left;
+    margin-right: 2%;
+    box-sizing: border-box;
+    padding: 1em;
+    overflow: hidden;
+}
+
+/*SEIS COLUMNAS*/
+.seis_columnas .columna {
+    width: 15%;
+}
+
+.seis_columnas .columna:nth-child(6n) {
+    margin-right: 0;
+}
+
+
+/*ASIDE DERECHA*/
+.aside_derecha .contenido {
+    width: 80%;
+}
+
+.aside_derecha .aside {
+    width: 18%;
+    margin-right: 0;
+}

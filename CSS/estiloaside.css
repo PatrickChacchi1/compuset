@@ -1,0 +1,324 @@
+html{
+    box-sizing: border-box;
+    font-size: 60.5%;
+}
+
+*,*::before,*::after{
+    box-sizing: inherit;
+}
+
+
+img{
+    width: 100%;
+}
+
+.velo-negro{
+    width: 100%;
+    margin: 2% auto;
+    overflow: hidden;
+}
+
+.header{
+    display: flex;   
+    justify-content: center;
+}
+
+.logo-img{
+    max-width: 40rem;
+    margin: 3rem 0;
+}
+
+nav{
+    margin: 3rem 0 8rem 0;
+    background-color: rgba(255, 55, 55, 0.768);
+    display: flex;
+    justify-content: center;
+    gap: 10rem;
+}
+
+a{
+    text-decoration: none;
+}
+
+nav a{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+    font-size: 3rem;
+    color: black;
+    text-transform: uppercase;
+}
+
+ul, li{
+    list-style: none;
+}
+
+nav a:hover{
+    color: green;
+    cursor: pointer;
+}
+
+nav li ul {
+    display: none;
+    position: absolute;
+    min-height: 140px;
+}
+
+nav li:hover > ul{
+    display: inline-block;
+    position: fixed;
+    padding-block: -10px;
+    margin-top: 35px;
+    margin-left: -240px;
+}
+
+
+nav li ul li{
+    position: relative;
+}
+
+nav li ul li ul{
+    right: -140px;
+    top: 0px;
+}
+
+.nuevos-productos{
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    font-size: 4rem;
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+/* dos columnas */
+.sidebar, .contenedor{
+    float: left;
+    margin-right: 2%;
+    box-sizing: border-box;
+    padding: 1em;
+    overflow: hidden;
+}
+
+.velo-negro .sidebar{
+    width: 20%;
+}
+
+.velo-negro .contenedor{
+    width: 78%;
+}
+
+.velo-negro .sidebar:nth-child(2n){
+    margin-right: 0;
+}
+
+.velo-negro .contenedor:nth-child(2n){
+    margin-right: 0;
+}
+
+
+/* dos columnas */
+
+
+.contenedor{
+    width: 100%;
+    margin: 2% auto;
+    overflow: hidden;
+}
+
+.producto{
+    
+    float: left;
+    margin-right: 2%;
+    box-sizing: border-box;
+    padding: 1em;
+    overflow: hidden;
+}
+
+.contenedor .producto{
+    width: 49%;
+}
+
+.contenedor .producto:nth-child(2n){
+    margin-right: 0;
+}
+
+.producto-blanco{
+    background-color: white;
+
+    object-fit: contain;
+    padding: 1rem;
+}
+
+.producto-precio, .producto-nombre{
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.producto-precio{
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+.producto-nombre{
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.botons{
+    display: block;
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+	outline: none;
+	border: none;
+	background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+	background-size: 200%;
+	font-size: 1.2rem;
+	color: #fff;
+	font-family: 'Poppins', sans-serif;
+	text-transform: uppercase;
+	margin: 1rem 0;
+	cursor: pointer;
+	transition: .5s;
+}
+
+.footer{
+    background-color: black;
+    padding: 3.5rem;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-bottom: 2rem;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.nosotros{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10rem;
+    margin-bottom: 20rem;
+    
+}
+
+.nosotros-texto{
+     color: black;
+     font-size: 3rem;
+     font-family: Arial, Helvetica, sans-serif;
+}
+
+.nosotros-img{
+    background-color: black;
+    border-radius: 5%;
+}
+
+.bloques{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20rem;
+}
+
+.bloques img{
+    width: 20rem;
+    margin-bottom: 2rem;
+    height: 20rem;
+}
+.bloque-titulo{
+    margin:0;
+}
+
+.bloque{
+    text-align: center;
+    color: black;
+    font-size: 3rem;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 5rem;
+}
+.bloque-titulo{
+    color: red;
+    font-size: 4rem;
+    margin: 3rem;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.enlace-footer:hover{
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/*---------------------------------*/
+aside{
+    margin: 3rem 0 8rem 0;
+    width: 90%;
+    float: left;
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.5rem;
+    color: black;
+}
+
+li input{
+    margin-left: -40px;
+}
+
+aside a{
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+aside li, section li, .precio li{
+    
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    font-size: 2rem;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+section{
+    margin: 3rem 0 8rem 0;
+    width: 90%;
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.1rem;
+    color: black;    
+}
+
+section a{
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.precio{
+    margin: 3rem 0 8rem 0;
+    width: 90%;
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+    color: black;
+}
+
+.precio a{
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold; 
+}
+
+.precio ul{
+    width: 90%;
+    
+}
+
+.precio input{
+    display: block;
+    width: 90%;
+    height: 30px;
+    margin: .5rem;
+}

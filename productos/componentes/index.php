@@ -38,7 +38,7 @@ include '../../funciones/conexion.php';
                 </ul>
             </li>
             <a href="../../productos/">Ofertas</a>
-            <a href="../../carrito/">Carrito</a>
+            <a href="../../carrito/">Carrito(0)</a>
             <a href="../../nosotros.html">Nosotros</a>
         </nav>
 
@@ -81,7 +81,7 @@ include '../../funciones/conexion.php';
                     <div class="producto">
 
                         <div class="producto-blanco">
-                            <img src="<?php echo $producto['Foto']; ?>" alt="<?php echo $producto['Nombres'] ?>">
+                            <img src="<?php echo $producto['Foto']; ?>" alt="<?php echo $producto['Nombres'] ?>" data-toggle="popover" data-trigger="hover" data-content="<?php echo $producto['Descripcion']; ?>">
 
                         </div>
 
@@ -95,6 +95,13 @@ include '../../funciones/conexion.php';
             </div>
 
         </div>
+
+        <script>
+            $(function() {
+                $('[data-toggle="popover"]').popover()
+            });
+        </script>
+
     </div>
 
 

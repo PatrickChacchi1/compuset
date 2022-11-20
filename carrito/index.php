@@ -1,8 +1,8 @@
 <?php
 
-include 'funciones/config.php'; // CONEXION A LA BASE DE DATOS
-include 'funciones/conexion.php'; // CONEXION A LA BASE DE DATOS
-include 'funciones/carrito.php'; // 
+include '../funciones/config.php'; // CONEXION A LA BASE DE DATOS
+include '../funciones/conexion.php'; // CONEXION A LA BASE DE DATOS
+include '../funciones/carrito.php'; // 
 
 ?>
 
@@ -12,15 +12,17 @@ include 'funciones/carrito.php'; //
 
 <head>
     <meta charset="UTF-8">
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compuset</title>
+
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="CSS/style.css">
+    <link rel="stylesheet" href="../CSS/carrito.css">
+    <link rel="stylesheet" href="../CSS/estiloaside.css">
 
 </head>
 
@@ -34,9 +36,9 @@ include 'funciones/carrito.php'; //
             <!-------------------------------------------------->
             <!--ESTE ES LA CABECERA DE NUESTRO DOCUMENTO INDEX-->
             <header class="header">
-                <a href="index.php">
+                <a href="../index.php">
 
-                    <img src="IMG/logo.png" alt="logo" class="logo-img">
+                    <img src="../IMG/logo.png" alt="logo" class="logo-img">
                 </a>
 
             </header>
@@ -45,69 +47,67 @@ include 'funciones/carrito.php'; //
             <nav>
                 <li><a>Productos</a>
                     <ul>
-                        <li><a href="productos/categorias/">Categoria</a></li>
-                        <li><a href="productos/componentes/">Componentes</a></li>
+                        <li><a href="../productos/categorias/">Categoria</a></li>
+                        <li><a href="../productos/componentes/">Componentes</a></li>
                     </ul>
                 </li>
-                <a href="productos/">Ofertas</a>
-                <a href="carrito/">Carrito(<?php echo (empty($_SESSION['CARRITO'])) ? 0 : count($_SESSION['CARRITO']); ?>)</a>
-                <a href="nosotros.html">Nosotros</a>
+                <a href="../productos/">Ofertas</a>
+                <a href="#">Carrito(<?php echo (empty($_SESSION['CARRITO'])) ? 0 : count($_SESSION['CARRITO']); ?>)</a>
+                <a href="../nosotros.html">Nosotros</a>
             </nav>
 
 
             <!--ESTE ES EL INICIO DEL CONTENIDO PRINCIPAL-->
-            <main class="contenedor">
-                <h1 class="nuevos-productos">Nuevos Ingresos <?php echo $mensaje ?></h1>
 
-                <!--INICIO PRODUCTOS-->
-                <div class="productos">
-                    <?php
-                    $sentencia = $pdo->prepare("SELECT * FROM `producto`");
-                    $sentencia->execute();
-                    $listaProductos = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-                    ?>
-                    <?php foreach ($listaProductos as $producto) { ?>
+            <?php if (!empty($_SESSION['CARRITO'])) { ?>
+                <table class="tabcarrito">
 
-                        <!---INICIO PRODUCTO-->
-                        <div class="producto">
 
-                            <div class="producto-blanco">
-                                <img src="<?php echo $producto['Foto']; ?>" alt="<?php echo $producto['Nombres'] ?>" data-toggle="popover" data-trigger="hover" data-content="<?php echo $producto['Descripcion']; ?>" height="317px">
+                    <tbody>
+                        <tr>
+                            <th width="4%">Stock</th>
+                            <th width="18%">Imagen</th>
+                            <th width="30%">Descripcion</th>
+                            <th width="8%">Cantidad</th>
+                            <th width="10%">Precio Unitario</th>
+                            <th width="10%">Sub Total</th>
+                            <th width="4%">--</th>
+                        </tr>
+                        <?php $total = 0; ?>
+                        <?php foreach ($_SESSION['CARRITO'] as $indice => $producto) { ?>
+                            <tr>
+                                <th width="4%">10</th>
+                                <th width="18%">Imagen</th>
+                                <th width="30%"><?php echo $producto['NOMBRE'] ?></th>
+                                <th width="8%"><?php echo $producto['CANTIDAD'] ?></th>
+                                <th width="10%"><?php echo $producto['PRECIO'] ?></th>
+                                <th width="10%"><?php echo number_format($producto['PRECIO'] * $producto['CANTIDAD'], 2); ?></th>
+                                <th width="4%"><button class="btn btn-danger" type="button">Eliminar</button></th>
+                            </tr>
+                            <?php $total = $total + ($producto['PRECIO'] * $producto['CANTIDAD']);  ?>
+                        <?php } ?>
+                    </tbody>
+                </table>
+                <aside class="tabderecha">
+                    <tbody>
+                        <tr>
+                            <ul>Total</ul>
+                            <ul>
+                                <h3>S/. <?php echo number_format($total, 2); ?></h3>
+                            </ul>
+                            <ul><button class="btn" type="button">Procesar Compra</button></ul>
+                        </tr>
+                    </tbody>
+                    </table>
+                <?php } else { ?>
+                    <div class="alert alert-success">
+                        No hay productos en el carrito
+                    </div>
+                <?php } ?>
 
-                            </div>
 
-                            <div class="producto-informacion">
-                                <p class="producto-nombre"><?php echo $producto['Nombres'] ?></p>
-                                <p class="producto-precio">S/. <?php echo $producto['Precio'] ?></p>
-                                <form action="" method="post">
-                                    <input type="hidden" name="id" id="id" value="<?php echo openssl_encrypt($producto['idProducto'], COD, KEY); ?>">
-                                    <input type="hidden" name="nombre" id="nombre" value="<?php echo openssl_encrypt($producto['Nombres'], COD, KEY); ?>">
-                                    <input type="hidden" name="precio" id="precio" value="<?php echo openssl_encrypt($producto['Precio'], COD, KEY); ?>">
-                                    <input type="hidden" name="cantidad" id="cantidad" value="<?php echo openssl_encrypt(2, COD, KEY); ?>">
-
-                                    <button class="botons" value="Agregar" name="btnAccion" type="submit">Comprar</button>
-
-                                </form>
-
-                            </div>
-
-                        </div>
-
-                    <?php } ?>
-
-                </div>
 
         </div>
-
-        </main>
-        <!--FIN DEL CONTENIDO PRINCIPAL-->
-
-        <script>
-            $(function() {
-                $('[data-toggle="popover"]').popover()
-            });
-        </script>
-    </div>
 
     </div>
 
@@ -152,6 +152,5 @@ include 'funciones/carrito.php'; //
 
 
 </body>
-
 
 </html>

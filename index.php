@@ -83,7 +83,7 @@ include 'funciones/carrito.php'; //
                                     <input type="hidden" name="id" id="id" value="<?php echo openssl_encrypt($producto['idProducto'], COD, KEY); ?>">
                                     <input type="hidden" name="nombre" id="nombre" value="<?php echo openssl_encrypt($producto['Nombres'], COD, KEY); ?>">
                                     <input type="hidden" name="precio" id="precio" value="<?php echo openssl_encrypt($producto['Precio'], COD, KEY); ?>">
-                                    <input type="hidden" name="cantidad" id="cantidad" value="<?php echo openssl_encrypt(2, COD, KEY); ?>">
+                                    <input type="hidden" name="cantidad" id="cantidad" value="<?php echo openssl_encrypt(1, COD, KEY); ?>">
 
                                     <button class="botons" value="Agregar" name="btnAccion" type="submit">Comprar</button>
 
